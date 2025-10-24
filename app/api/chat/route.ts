@@ -11,12 +11,18 @@ const openai = createOpenAI({
 export const runtime = 'edge'
 
 export async function POST(req: Request) {
-  const { messages } = await req.json()
-
-  const result = await streamText({
-    model: openai('gpt-4o-mini'),
-    messages,
+  return new Response(JSON.stringify({ message: 'Hello world' }), {
+    headers: { 'Content-Type': 'application/json' },
   })
-
-  return result.toTextStreamResponse()
 }
+
+// export async function POST(req: Request) {
+//   const { messages } = await req.json()
+
+//   const result = await streamText({
+//     model: openai('gpt-4o-mini'),
+//     messages,
+//   })
+
+//   return result.toTextStreamResponse()
+// }
